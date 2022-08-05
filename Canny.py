@@ -2,10 +2,6 @@ from PIL import Image, ImageOps
 import math
 import numpy as np
 
-x = -22.4
-    
-print((x+22.5)//45*45)
-quit()
 
 
 
@@ -18,7 +14,7 @@ image = Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\engine
 image = ImageOps.grayscale(image)
 pixels = image.load()
 
-
+print("Greyscale Done")
 
 #Gaussian Filter (Will replace later with an adaptive filter)---------------------------------------------
 k = 2
@@ -40,8 +36,8 @@ for col in range(new_image.size[0]):
         new_pixels[col,row] = int(np.sum(kernal*window.clip(min=0))/total)
                 
 image = new_image
-image.show()
 
+print("Gaussian Filter Done")
 
 #Intensity Gradient using Sobel Filter--------------------------------------------------------------------
 new_image = Image.new('L', image.size, "white")
@@ -55,32 +51,50 @@ angles = np.empty((image.size[1], image.size[0]))
 
 for col in range(new_image.size[0]):
     for row in range(new_image.size[1]):
-        window = np.array([[pixels[col+c,row+r] if (0 <= col+c < new_image.size[0] and 0 <= row+r < new_image.size[1]) else -1 for c in range(-1, 2)] for r in range(-1, 2)])
+        window = np.array([[pixels[col+c,row+r] if (0 <= col+c < new_image.size[0] and 0 <= row+r < new_image.size[1]) else 0 for c in range(-1, 2)] for r in range(-1, 2)])
         gx = np.sum(window*xkernal)
         gy = np.sum(window*ykernal)
         
         G = math.sqrt(gx**2 + gy**2)
-        theta = math.atan2(gy, gx)
 
+        #Round to nearest axis (vertical, horizontal, either diagonals)
+        theta = math.atan2(gy, gx)*180/math.pi
+        if theta < 0:
+            theta += 180
+        theta = (theta+22.5)//45*45
+        if theta == 180:
+            theta = 0
+        
+        
         new_pixels[col,row] = int(G)
         gradients[row][col] = G
         angles[row][col] = theta
 
 image = new_image
+pixels = image.load()
 image.show()
-        
+print("Intensity Gradient Done")
 
 #Non-maximum Suppression-----------------------------------------------------------------------------------
+#At every pixel, it suppresses the edge strength of the center pixel
+#(by setting its value to 0) if its magnitude is not greater than the magnitude of the two neighbors in the gradient direction
 new_image = Image.new('L', image.size, "white")
 new_pixels = new_image.load()
-
+                      
 for col in range(new_image.size[0]):
     for row in range(new_image.size[1]):
-        pass
+        angle = angles[row][col]*math.pi/180
         
-        
-
-
+        #Neighbors in gradient direction
+        ndx = round(math.cos(angle))
+        ndy = round(math.sin(angle))
+        n1 = gradients[row+ndy][col+ndx] if 0 <= row+ndy < image.size[1] and 0 <= col+ndx < image.size[0] else 0
+        n2 = gradients[row-ndy][col-ndx] if 0 <= row-ndy < image.size[1] and 0 <= col-ndx < image.size[0] else 0
+        if gradients[row][col] < n1 or gradients[row][col] < n2:
+            new_pixels[col,row] = 0
+        else:
+            new_pixels[col,row] = pixels[col,row]
+            
 image = new_image
 image.show()
 
