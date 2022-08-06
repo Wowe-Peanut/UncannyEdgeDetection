@@ -72,7 +72,7 @@ for col in range(new_image.size[0]):
 
 image = new_image
 pixels = image.load()
-image.show()
+
 print("Intensity Gradient Done")
 
 #Non-maximum Suppression-----------------------------------------------------------------------------------
@@ -92,15 +92,49 @@ for col in range(new_image.size[0]):
         n2 = gradients[row-ndy][col-ndx] if 0 <= row-ndy < image.size[1] and 0 <= col-ndx < image.size[0] else 0
         if gradients[row][col] < n1 or gradients[row][col] < n2:
             new_pixels[col,row] = 0
+            gradients[row][col] = 0
         else:
             new_pixels[col,row] = pixels[col,row]
             
 image = new_image
+pixels = image.load()
+
+print("Non-Max Suppression Done")
+
+#Hysteresis Thresholding
+"""
+1. Set a min and max range
+2. Anything below min is discarded and everything above max is kept and labeled as "strong"
+3. Anything in the middle must be connected to a strong pixel (at least 1 of its 8 neighbors is a strong pixel)
+"""
+
+top = 100
+bottom = 80
+
+for col in range(image.size[0]):
+    for row in range(image.size[1]):
+        
+        if gradients[row][col] < bottom:
+            pixels[col,row] = 0
+        elif gradients[row][col] < top:
+            directions = [[0, 1], [1, 1], [1, 0], [-1, 1], [-1, 0], [-1, -1], [-1, 0], [1, -1]]
+            connected = False
+
+            for d in directions:
+                if 0 <= row+d[0] < image.size[1] and 0 <= col+d[1] < image.size[0] and gradients[row+d[0]][col+d[1]] > top:
+                    break
+                    connected = True
+            
+            if connected:
+                pixels[col, row] = 255
+            else:
+                pixels[col,row] = 0
+        else:
+            pixels[col,row] = 255
+
+
+
 image.show()
-
-
-
-
 
 
 
