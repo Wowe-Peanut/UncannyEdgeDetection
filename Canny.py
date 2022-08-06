@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-image = Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\engine.png")
+image = Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\car.png")
 
 
 
