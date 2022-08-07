@@ -103,9 +103,12 @@ def trace_image(image):
 
     #Hysteresis Thresholding
     """
+    Otsu's Method is used to find the max/min range
+
     1. Set a min and max range
     2. Anything below min is discarded and everything above max is kept and labeled as "strong"
     3. Anything in the middle must be connected to a strong pixel (at least 1 of its 8 neighbors is a strong pixel)
+    
     """
 
     top = 60
@@ -151,7 +154,7 @@ def trace_gif(gif_path):
     
         
 
-trace_gif(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\Shockinggif.gif")
+trace_image(Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\shocking.png")).show()
     
 
 
