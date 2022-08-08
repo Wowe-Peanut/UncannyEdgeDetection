@@ -9,12 +9,17 @@ import random
 
 
 
+
+
+
+
+
 def trace_image(image):
     #Grayscale image------------------------------------------------------------------------------------------
     image = ImageOps.grayscale(image)
     pixels = image.load()
 
-    #print("Greyscale Done")
+    
 
     #Gaussian Filter (Will replace later with an adaptive filter)---------------------------------------------
     k = 2
@@ -37,7 +42,7 @@ def trace_image(image):
                     
     image = new_image
 
-    #print("Gaussian Filter Done")
+    
 
     #Intensity Gradient using Sobel Filter--------------------------------------------------------------------
     new_image = Image.new('L', image.size, "white")
@@ -73,7 +78,7 @@ def trace_image(image):
     image = new_image
     pixels = image.load()
 
-    #print("Intensity Gradient Done")
+    
 
     #Non-maximum Suppression-----------------------------------------------------------------------------------
     #At every pixel, it suppresses the edge strength of the center pixel
@@ -99,9 +104,41 @@ def trace_image(image):
     image = new_image
     pixels = image.load()
 
-    #print("Non-Max Suppression Done")
+    
 
-    #Hysteresis Thresholding
+    
+    
+
+    #Otsu's Method-----------------------------------------------------------------------------------------------
+    #This will find the upper bound and the lower bound is typically set to half the upper
+    
+    int_grad = gradients.astype(int)
+    histogram = [np.count_nonzero(int_grad == i) for i in range(np.amax(int_grad))]
+    
+    top = 0
+    best_ob = 0
+    for t in range(len(histogram)-1):
+        wb = sum(histogram[:t+1])/(image.size[0]*image.size[1])
+        wf = sum(histogram[t+1:])/(image.size[0]*image.size[1])
+
+        if wb == 0 or wf == 0:
+            continue
+        
+        ub = sum([histogram[i]*i for i in range(t+1)]) / sum(histogram[:t+1])
+        uf = sum([histogram[i]*i for i in range(t+1, len(histogram))]) / sum(histogram[t+1:])
+        
+        ob = wb*wf*(ub-uf)**2
+        
+        if ob > best_ob:
+            top = t+1
+            best_ob = ob
+
+
+    top -= 50
+    bottom = top//2
+    
+    print(top)
+    #Hysteresis Thresholding-------------------------------------------------------------------------------------
     """
     Otsu's Method is used to find the max/min range
 
@@ -110,10 +147,6 @@ def trace_image(image):
     3. Anything in the middle must be connected to a strong pixel (at least 1 of its 8 neighbors is a strong pixel)
     
     """
-
-    top = 60
-    bottom = 50 
-
     for col in range(image.size[0]):
         for row in range(image.size[1]):
             
@@ -154,7 +187,7 @@ def trace_gif(gif_path):
     
         
 
-trace_image(Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\shocking.png")).show()
+trace_image(Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\renei.jpg")).show()
     
 
 
