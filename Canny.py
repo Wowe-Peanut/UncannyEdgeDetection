@@ -134,10 +134,10 @@ def trace_image(image):
             best_ob = ob
 
 
-    top -= 50
+    
     bottom = top//2
     
-    print(top)
+
     #Hysteresis Thresholding-------------------------------------------------------------------------------------
     """
     Otsu's Method is used to find the max/min range
@@ -187,7 +187,7 @@ def trace_gif(gif_path):
     
         
 
-trace_image(Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\renei.jpg")).show()
+trace_image(Image.open(r"C:\Users\Peanu\OneDrive\Desktop\UncannyEdgeDetection\engine.png")).show()
     
 
 
