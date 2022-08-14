@@ -12,48 +12,48 @@ It's not great, but it's also not too bad. It does a decent job at picking up ed
 
 <p float="left">
 
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchen.jpg" width="333">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenGrayscale.PNG" width="333">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenGaussian.PNG" width="333">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenIntensityGradient.PNG" width="333">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenEdgeThinning.PNG" width="333">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchen%20trace%202.PNG" width="333">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchen.jpg" width="240">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenGrayscale.PNG" width="240">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenGaussian.PNG" width="240">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenIntensityGradient.PNG" width="240">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchenEdgeThinning.PNG" width="240">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/kitchen%20trace%202.PNG" width="240">
   
 </p>
 
 <p float="left">
 
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/Shockinggif.gif" width="500">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/shockinggif%20traced.gif" width="500">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/Shockinggif.gif" width="360">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/shockinggif%20traced.gif" width="360">
   
 </p>
 
 </p>
 
 <p float="left">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/car.PNG" width="500">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/car%20trace.PNG" width="500">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/car.PNG" width="360">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/car%20trace.PNG" width="360">
 </p>
 
 
 <p float="left">
 
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/engine.png" width="500">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/engine%20trace2.PNG" width="500">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/engine.png" width="360">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/engine%20trace2.PNG" width="360">
   
 </p>
 
 <p float="left">
 
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/insane.jpg" width="500">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/insane%20trace.PNG" width="500">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/insane.jpg" width="360">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/insane%20trace.PNG" width="360">
   
 </p>
 
 <p float="left">
 
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/asuna.jpg" width="500">
-<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/asunatrace.PNG" width="500">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/asuna.jpg" width="360">
+<img src="https://github.com/Wowe-Peanut/UncannyEdgeDetection/blob/main/Images/asunatrace.PNG" width="360">
   
 </p>
 
